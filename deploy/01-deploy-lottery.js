@@ -36,7 +36,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
         callbackGasLimit,
         interval,
     ] // <---------got to 3rd arg (15:17:10 in video)
-    const lottery = await deploy("lottery", {
+    const lottery = await deploy("Lottery", {
         from: deployer,
         args: args,
         log: true,
