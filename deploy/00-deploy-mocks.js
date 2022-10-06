@@ -7,13 +7,13 @@ const GAS_PRICE_LINK = 1e9 // based on gas price of the chain - link per gas.
 module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments
     const { deployer } = await getNamedAccounts()
-    const cainId = network.config.chainId
+    const chainId = network.config.chainId
     const args = [BASE_FEE, GAS_PRICE_LINK]
 
     if (developmentChains.includes(network.name)) {
         log("Local network detected! Deploying mocks...")
         // deploy mock vrfcoordinator
-        await deploy("VRFCoordinatorV2Mock.sol", {
+        await deploy("VRFCoordinatorV2Mock", {
             from: deployer,
             log: true,
             args: args,
@@ -24,3 +24,4 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 }
 
 module.exports.tags = ["all", "mocks"]
+
