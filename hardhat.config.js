@@ -25,6 +25,12 @@ module.exports = {
             blockConfirmations: 6,
         },
     },
+    gasReporter: {
+        enabled: false,
+        currency: "USD",
+        outputFile: "gas-report.txt",
+        noColors: true,
+    },
     solidity: "0.8.17",
     namedAccounts: {
         deployer: {
