@@ -8,7 +8,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
 
 error Lottery__NotEnoughEthEntered();
 error Lottery__TransferFailed();
-error Lottery__NotOpen();
+error Lottery_NotOpen();
 error Lottery__UpkeepNotNeeded(uint256 currentBalance, uint256 numPlayers, uint256 lotteryState);
 
 /**@title A sample Raffle Contract
@@ -69,7 +69,7 @@ contract Lottery is VRFConsumerBaseV2, KeeperCompatibleInterface {
             revert Lottery__NotEnoughEthEntered();
         }
         if (s_lotteryState != LotteryState.OPEN) {
-            revert Lottery__NotOpen();
+            revert Lottery_NotOpen();
         }
         s_players.push(payable(msg.sender));
         // Emit an event when we update a dynamic array or mapping

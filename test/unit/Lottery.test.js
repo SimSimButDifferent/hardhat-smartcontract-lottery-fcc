@@ -54,7 +54,43 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                   await lottery.performUpkeep([])
                   await expect(
                       lottery.enterLottery({ value: lotteryEntranceFee })
-                  ).to.be.revertedWith("Lottery__NotOpen")
+                  ).to.be.revertedWith("Lottery_NotOpen")
+              })
+          })
+
+          describe("checkUpkeep", async function () {
+              it("returns false if people haven't sent enough ETH", async function () {
+                  await network.provider.send("evm_increaseTime", [interval.toNumber() + 1])
+                  await network.provider.send("evm_mine", [])
+                  const { upkeepNeeded } = await lottery.callStatic.checkUpkeep([])
+                  assert(!upkeepNeeded)
+              })
+
+              it("returns false if lottery isn't open", async function () {
+                  await lottery.enterLottery({ value: lotteryEntranceFee })
+                  await network.provider.send("evm_increaseTime", [interval.toNumber() + 1])
+                  await network.provider.send("evm_mine", [])
+                  await lottery.performUpkeep([])
+                  const lotteryState = await lottery.getLotteryState()
+                  const { upkeepNeeded } = await lottery.callStatic.checkUpkeep([])
+                  assert.equal(lotteryState.toString(), "1")
+                  assert.equal(upkeepNeeded, false)
+              })
+
+              it("returns false if enough time hasn't passed", async function () {
+                  await lottery.enterLottery({ value: lotteryEntranceFee })
+                  await network.provider.send("evm_increaseTime", [interval.toNumber() - 5])
+                  await network.provider.request({ method: "evm_mine", params: [] })
+                  const { upkeepNeeded } = await lottery.callStatic.checkUpkeep([])
+                  assert(!upkeepNeeded)
+              })
+
+              it("returns true if enough time has passed, has players, eth and is open", async function () {
+                  await lottery.enterLottery({ value: lotteryEntranceFee })
+                  await network.provider.send("evm_increaseTime", [interval.toNumber() + 1])
+                  await network.provider.request({ method: "evm_mine", params: [] })
+                  const { upkeepNeeded } = await lottery.callStatic.checkUpkeep([])
+                  assert(upkeepNeeded)
               })
           })
       })
