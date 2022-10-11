@@ -18,29 +18,39 @@ module.exports = {
             chainId: 31337,
             blockConfirmations: 1,
         },
+        localhost: {
+            chainId: 31337,
+        },
         goerli: {
             url: GOERLI_RPC_URL,
-            accounts: [PRIVATE_KEY],
+            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
             chainId: 5,
             blockConfirmations: 6,
         },
     },
+    etherscan: {
+        apiKey: {
+            goerli: ETHERSCAN_API_KEY,
+        },
+    },
     gasReporter: {
-        enabled: false,
+        enabled: true,
         currency: "USD",
         outputFile: "gas-report.txt",
         noColors: true,
+        coinmarketcap: process.env.COINMARKETCAP_API_KEY,
     },
     solidity: "0.8.17",
     namedAccounts: {
         deployer: {
             default: 0,
+            1: 0,
         },
         player: {
             default: 1,
         },
     },
     mocha: {
-        timeout: 400000, // X00 seconds
+        timeout: 500000, // X00 seconds
     },
 }

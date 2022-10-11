@@ -6,3 +6,5 @@ coverage
 coverage.json
 cache
 deployments
+
+gas-report.txt
