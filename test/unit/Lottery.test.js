@@ -161,10 +161,10 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                           try {
                               const recentWinner = await lottery.getRecentWinner()
                               console.log(recentWinner)
-                              console.log(accounts[2])
-                              console.log(accounts[0])
-                              console.log(accounts[1])
-                              console.log(accounts[3])
+                              console.log(accounts[2].address)
+                              console.log(accounts[0].address)
+                              console.log(accounts[1].address)
+                              console.log(accounts[3].address)
 
                               const lotteryState = await lottery.getLotteryState()
                               const endingTimeStamp = await lottery.getLatestTimeStamp()
@@ -173,7 +173,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
 
                               assert.equal(numPlayers.toString(), "0")
                               assert.equal(lotteryState.toString(), "0")
-                              assert(endingTimeStamp > startingTime)
+                              assert(endingTimeStamp > startingTimeStamp)
 
                               assert.equal(
                                   winnerEndingBalance.toString(),
