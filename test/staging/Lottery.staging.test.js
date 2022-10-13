@@ -5,7 +5,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
 
 developmentChains.includes(network.name)
     ? describe.skip
-    : describe("Lottery Unit Tests", function () {
+    : describe("Lottery Staging Tests", function () {
           let lottery, lotteryEntranceFee, deployer
 
           beforeEach(async function () {
@@ -17,9 +17,11 @@ developmentChains.includes(network.name)
           describe("fulfillRandomWords", function () {
               it("works with live Chainlink keepers and chainlink VRF, we get a random number", async function () {
                   //enter the lottery
+                  console.log("Setting up test...")
                   const startingTimeStamp = await lottery.getLatestTimeStamp()
                   const accounts = await ethers.getSigners()
 
+                  console.log("Setting up Listener...")
                   await new Promise(async (resolve, reject) => {
                       lottery.once("WinnerPicked", async () => {
                           console.log("WinnerPicked event fired!")
@@ -45,7 +47,9 @@ developmentChains.includes(network.name)
                               reject(e)
                           }
                       })
-                      await lottery.enterLottery({ value: lotteryEntranceFee })
+                      const tx = await lottery.enterLottery({ value: lotteryEntranceFee })
+                      await tx.wait(1)
+                      console.log("Ok, time to wait...")
                       const winnerStartingBalance = await accounts[0].getBalance()
                   })
               })
