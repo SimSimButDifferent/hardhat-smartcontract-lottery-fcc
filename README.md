@@ -176,6 +176,9 @@ yarn lint:fix
 ```
 
 # Thank you Patrick Collins and FreeCodeCamp!
+<br>
 https://github.com/PatrickAlphaC
-freecodecamp.com
+<br>
+https://freecodecamp.com
+<br>
 https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=59550s  <----- Full course here.
