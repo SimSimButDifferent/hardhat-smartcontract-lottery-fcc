@@ -6,9 +6,9 @@ This is a section of the Javascript Blockchain/Smart Contract FreeCodeCamp Cours
 
 *[⌨️ (13:41:02) Lesson 9: Hardhat Smart Contract Lottery](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=49262s)*
 
-[Full Repo](https://github.com/smartcontractkit/full-blockchain-solidity-course-js)
+[Full Repo](https://github.com/SimSimButDifferent/hardhat-smartcontract-lottery-fcc)
 
-- [Hardhat Smartcontract Lottery (Raffle) FCC](#hardhat-smartcontract-lottery-raffle-fcc)
+- [Hardhat Smartcontract Lottery (Raffle) FCC](#hardhat-smartcontract-lottery-fcc)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Quickstart](#quickstart)
@@ -124,7 +124,7 @@ Go back to [vrf.chain.link](https://vrf.chain.link) and under your subscription 
 
 Go to [keepers.chain.link](https://keepers.chain.link/new) and register a new upkeep. Choose `Custom logic` as your trigger mechanism for automation. Your UI will look something like this once completed:
 
-![Keepers](./img/keepers.png)
+![image](https://user-images.githubusercontent.com/88177427/197371425-c28b824c-0e08-4fec-9fd1-9c58f5b355ff.png)
 
 6. Enter your raffle!
 
@@ -176,9 +176,9 @@ yarn lint:fix
 ```
 
 # Thank you Patrick Collins and FreeCodeCamp!
-<br>
-https://github.com/PatrickAlphaC
-<br>
-https://freecodecamp.com
-<br>
-https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=59550s  <----- Full course here.
+
+[Patrick Collins Github](https://github.com/PatrickAlphaC)
+
+[FreeCodeCamp](https://freecodecamp.com)
+
+[Learn Blockchain, Solidity, and Full Stack Web3 Development with JavaScript – 32-Hour Course](https://www.youtube.com/watch?v=gyMwXuJrbJQ&t=59550s)
