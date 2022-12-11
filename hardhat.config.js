@@ -26,6 +26,8 @@ module.exports = {
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
             chainId: 5,
             blockConfirmations: 6,
+            //gas: 2100000,
+            //gasPrice: 8000000000,
         },
     },
     etherscan: {

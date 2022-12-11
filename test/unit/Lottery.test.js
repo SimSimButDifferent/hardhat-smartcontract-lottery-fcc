@@ -17,7 +17,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
               interval = await lottery.getInterval()
           })
 
-          describe("constructer", function () {
+          describe("constructor", function () {
               it("initialises the lottery correctly", async function () {
                   const lotteryState = await lottery.getLotteryState()
                   const interval = await lottery.getInterval()
